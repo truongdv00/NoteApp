@@ -8,12 +8,16 @@
             type="com.example.myapplication.NoteViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#040404"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
         <EditText
+            android:textColorHint="#BDB5B5"
+            android:textColor="@color/white"
+            android:background="#474343"
             android:text="@={myViewModle.inputDate}"
             android:id="@+id/edtdate"
             android:layout_width="match_parent"
@@ -26,6 +30,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:textColorHint="#BDB5B5"
+            android:textColor="@color/white"
+            android:background="#474343"
             android:text="@={myViewModle.inputContent}"
             android:id="@+id/edtcontent"
             android:layout_width="match_parent"
@@ -38,6 +45,8 @@
             app:layout_constraintTop_toBottomOf="@id/edtdate" />
 
         <LinearLayout
+            android:layout_marginHorizontal="5dp"
+            android:weightSum="2"
             android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,6 +55,8 @@
             app:layout_constraintTop_toBottomOf="@id/edtcontent">
 
             <Button
+                android:textColor="@color/white"
+                android:backgroundTint="#474343"
                 android:id="@+id/btnadd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +66,8 @@
                 android:text="@={myViewModle.saveOrUpdateButtonText}" />
 
             <Button
+                android:textColor="@color/white"
+                android:backgroundTint="#474343"
                 android:id="@+id/btndel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
