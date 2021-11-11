@@ -9,82 +9,119 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#040404"
+        android:background="#FDFCFC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <EditText
-            android:textColorHint="#BDB5B5"
+<!--        <TextView-->
+<!--            android:id="@+id/txtnote"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="EVENT NOTES"-->
+<!--            android:textColor="@color/purple_700"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+        <!--        <EditText-->
+
+<!--            android:id="@+id/edtdate"-->
+<!--            android:layout_width="377dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="15dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="#CCDCDCD9"-->
+<!--            android:hint="Date"-->
+<!--            android:text="@={myViewModle.inputDate}"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textColorHint="#FAF7F7"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/txtnote" />-->
+
+<!--        <EditText-->
+<!--            android:textColorHint="#FFFFFF"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:background="#CCDCDCD9"-->
+<!--            android:text="@={myViewModle.inputContent}"-->
+<!--            android:id="@+id/edtcontent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="15dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:hint="Content"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edtdate" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_marginHorizontal="5dp"-->
+<!--            android:weightSum="2"-->
+<!--            android:id="@+id/linear"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edtcontent">-->
+
+<!--            <Button-->
+<!--                android:textColor="@color/white"-->
+<!--                android:backgroundTint="#03A9F4"-->
+<!--                android:id="@+id/btnadd"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="@{()->myViewModle.saveOrUpdate()}"-->
+<!--                android:text="@={myViewModle.saveOrUpdateButtonText}" />-->
+
+<!--            <Button-->
+<!--                android:textColor="@color/white"-->
+<!--                android:backgroundTint="#03A9F4"-->
+<!--                android:id="@+id/btndel"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="@{()->myViewModle.clearAllOrDelete()}"-->
+<!--                android:text="@={myViewModle.clearAllOrDeleteButtonText}" />-->
+<!--        </LinearLayout>-->
+
+        <Button
+            android:onClick="@{()->myViewModle.saveOrUpdate()}"
+            android:text="@={myViewModle.saveOrUpdateButtonText}"
+            android:id="@+id/btnadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#03A9F4"
             android:textColor="@color/white"
-            android:background="#474343"
-            android:text="@={myViewModle.inputDate}"
-            android:id="@+id/edtdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="20dp"
-            android:hint="Date"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,NotSibling" />
 
-        <EditText
-            android:textColorHint="#BDB5B5"
-            android:textColor="@color/white"
-            android:background="#474343"
-            android:text="@={myViewModle.inputContent}"
-            android:id="@+id/edtcontent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="20dp"
-            android:hint="Content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edtdate" />
-
-        <LinearLayout
-            android:layout_marginHorizontal="5dp"
-            android:weightSum="2"
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/edtcontent">
-
-            <Button
-                android:textColor="@color/white"
-                android:backgroundTint="#474343"
-                android:id="@+id/btnadd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_weight="1"
-                android:onClick="@{()->myViewModle.saveOrUpdate()}"
-                android:text="@={myViewModle.saveOrUpdateButtonText}" />
-
-            <Button
-                android:textColor="@color/white"
-                android:backgroundTint="#474343"
-                android:id="@+id/btndel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_weight="1"
-                android:onClick="@{()->myViewModle.clearAllOrDelete()}"
-                android:text="@={myViewModle.clearAllOrDeleteButtonText}" />
-        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myRecyclerview"
+            tools:listitem="@layout/item_note"
+            android:layout_width="376dp"
+            android:layout_height="526dp"
             android:layout_marginHorizontal="15dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnadd"
+            tools:ignore="MissingConstraints">
         </androidx.recyclerview.widget.RecyclerView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
