@@ -1,9 +1,8 @@
 package com.example.myapplication
 
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +15,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
 
     val notes = repository.notes
     private var isUpdateOrDelete = false
-    private lateinit var noteToUpdateOrDelete : Note
+    private lateinit var noteToUpdateOrDelete: Note
 
     @Bindable
     val inputDate = MutableLiveData<String?>()
@@ -33,13 +32,20 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
     @Bindable
     val relative = MutableLiveData<String?>()
 
+
+    private val statsManager = MutableLiveData<Event<String>>()
+    val message: LiveData<Event<String>>
+        get() = statsManager
+
+
     init {
         saveOrUpdateButtonText.value = "Save"
         clearAllOrDeleteButtonText.value = "Clear"
     }
 
     fun saveOrUpdate() {
-        if(isUpdateOrDelete) {
+
+        if (isUpdateOrDelete) {
             noteToUpdateOrDelete.date = inputDate.value!!
             noteToUpdateOrDelete.content = inputContent.value!!
             update(noteToUpdateOrDelete)
@@ -52,6 +58,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
         }
 
     }
+
     fun plus() {
         relative
     }
@@ -65,17 +72,30 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
     }
 
     fun insert(note: Note): Job = viewModelScope.launch {
-        repository.insert(note)
+        val newDate: Long = repository.insert(note)
+        if (newDate > -1) {
+            statsManager.value = Event("Subscriber Inserted successfully $newDate")
+        } else {
+            statsManager.value = Event("Error Occurred")
+        }
     }
 
     fun update(note: Note): Job = viewModelScope.launch {
-        repository.update(note)
-        inputDate.value = null
-        inputContent.value = null
-        isUpdateOrDelete = false
-        saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear"
+        val noOfDate: Int = repository.update(note)
+        if (noOfDate > 0) {
+            repository.update(note)
+            inputDate.value = null
+            inputContent.value = null
+            isUpdateOrDelete = false
+            saveOrUpdateButtonText.value = "Save"
+            clearAllOrDeleteButtonText.value = "Clear"
+            statsManager.value = Event("$noOfDate Row Update successfully")
+        } else {
+
+            statsManager.value = Event("Error Occurred")
+        }
     }
+
     fun delete(note: Note): Job = viewModelScope.launch {
         repository.delete(note)
         inputDate.value = null
@@ -83,10 +103,15 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
         isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
         clearAllOrDeleteButtonText.value = "Clear"
+        statsManager.value = Event("Subscriber Delete successfully")
+
     }
+
     fun clearAll(): Job = viewModelScope.launch {
         repository.deleteAll()
+        statsManager.value = Event("All Subscriber Delete successfully")
     }
+
     fun initUpdateOrDelete(note: Note) {
         inputDate.value = note.date
         inputContent.value = note.content
@@ -104,4 +129,5 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel(), Obser
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }
+
 }

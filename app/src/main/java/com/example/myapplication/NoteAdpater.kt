@@ -1,14 +1,22 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ItemNoteBinding
 import com.example.myapplication.db.Note
-import com.example.myapplication.generated.callback.OnClickListener
 
-class NoteAdpater(private val listNote : List<Note>, private val clickListener:(Note)->Unit): RecyclerView.Adapter<MyViewHolder>() {
+
+class NoteAdpater(
+    private val listNote : List<Note>,
+    private val clickListener:(Note)->Unit,
+): RecyclerView.Adapter<MyViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater:LayoutInflater = LayoutInflater.from(parent.context)
         val binding: ItemNoteBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_note, parent, false)
@@ -33,3 +41,5 @@ class MyViewHolder(private val binding: ItemNoteBinding):RecyclerView.ViewHolder
         }
     }
 }
+
+

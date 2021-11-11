@@ -2,6 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:layout_marginVertical="10dp"
+        android:background="#CCEFEFEB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
@@ -10,30 +12,45 @@
         <LinearLayout
             android:id="@+id/item_layout"
             android:layout_marginVertical="10dp"
-            android:orientation="vertical"
-            android:background="#474343"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+
+                android:src="@drawable/icondate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <TextView
-                android:layout_marginHorizontal="20dp"
+
+                android:layout_marginHorizontal="10dp"
                 android:id="@+id/txtdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:text="aloo"
-                android:textColor="@color/white"
+                android:text="add"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/txtcontent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="5dp"
-                android:text="1234"
-                android:textColor="#A8A2A2"
-                android:textSize="16sp" />
         </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/notes"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+                <TextView
+                    android:id="@+id/txtcontent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="date"
+                    android:textColor="#F44336"
+                    android:textSize="16sp" />
+            </LinearLayout>
     </LinearLayout>
 </layout>
